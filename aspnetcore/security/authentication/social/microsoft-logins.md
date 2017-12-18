@@ -1,8 +1,8 @@
 ---
 title: Microsoft Account external login setup
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: This tutorial demonstrates the integration of Microsoft account user authentication into an existing ASP.NET Core app.
+keywords: ASP.NET Core,Microsoft account,login,authentication
 ms.author: riande
 manager: wpickett
 ms.date: 08/24/2017
@@ -13,8 +13,6 @@ ms.prod: asp.net-core
 uid: security/authentication/microsoft-logins
 ---
 # Configuring Microsoft Account authentication
-
-<a name=security-authentication-microsoft-logins></a>
 
 By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -36,7 +34,7 @@ If you don't already have a Microsoft account, tap **[Create one!](https://signu
 
 * For the purposes of this tutorial, clear the **Guided Setup** check box.
 
-* Tap **Create** to continue to the **Registration** page:
+* Tap **Create** to continue to the **Registration** page. Provide a **Name** and note the value of the **Application Id**, which you use as `ClientId` later in the tutorial:
 
 ![Registration page](index/_static/MicrosoftDevAppReg.png)
 
@@ -66,19 +64,22 @@ Link sensitive settings like Microsoft `Application ID` and `Password` to your a
 
 ## Configure Microsoft Account Authentication
 
-The project template used in this tutorial ensures that 
-[Microsoft.AspNetCore.Authentication.Microsoft](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Microsoft) package is already installed.
+The project template used in this tutorial ensures that [Microsoft.AspNetCore.Authentication.MicrosoftAccount](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.MicrosoftAccount) package is already installed.
 
 * To install this package with Visual Studio 2017, right-click on the project and select **Manage NuGet Packages**.
 * To install with .NET Core CLI, execute the following in your project directory:
 
-   `dotnet add package Microsoft.AspNetCore.Authentication.Microsoft`
+   `dotnet add package Microsoft.AspNetCore.Authentication.MicrosoftAccount`
 
 # [ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 Add the Microsoft Account service in the `ConfigureServices` method in *Startup.cs* file:
 
 ```csharp
+services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
 services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 {
     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
@@ -86,7 +87,7 @@ services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 });
 ```
 
-The `AddAuthentication` method should only be called once when adding multiple authentication providers. Subsequent calls to it have the potential of overriding any previously configured [AuthenticationOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.authenticationoptions) properties.
+[!INCLUDE[default settings configuration](includes/default-settings.md)]
 
 # [ASP.NET Core 1.x](#tab/aspnetcore1x)
 

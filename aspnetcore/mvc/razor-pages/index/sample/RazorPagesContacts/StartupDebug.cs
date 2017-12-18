@@ -10,15 +10,15 @@ namespace RazorPagesContacts
     {
         public StartupDebug(IHostingEnvironment env)
         {
-                  HostingEnvironment = env;
+            HostingEnvironment = env;
         }
 
         public IHostingEnvironment HostingEnvironment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => 
-                              options.UseInMemoryDatabase("name"));
+            services.AddDbContext<AppDbContext>(options =>
+                              options.UseInMemoryDatabase("InMemoryDb"));
             services.AddMvc();
         }
 

@@ -1,11 +1,11 @@
 ---
-title: Safe storage of app secrets during developmentin ASP.NET Core
+title: Safe storage of app secrets during development in ASP.NET Core
 author: rick-anderson
 description: Shows how to safely store secrets during development
 keywords: ASP.NET Core,
 ms.author: riande
 manager: wpickett
-ms.date: 7/14/2017
+ms.date: 09/15/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
@@ -13,17 +13,15 @@ uid: security/app-secrets
 ---
 # Safe storage of app secrets during development in ASP.NET Core
 
-<a name=security-app-secrets></a>
-
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27), and [Scott Addie](https://scottaddie.com) 
 
-This document shows how you can use the Secret Manager tool in development to keep secrets out of your code. The most important point is you should never store passwords or other sensitive data in source code, and you shouldn't use production secrets in development and test mode. You can instead use the [configuration](../fundamentals/configuration.md) system to read these values from environment variables or from values stored using the Secret Manager tool. The Secret Manager tool helps prevent sensitive data from being checked into source control. The [configuration](../fundamentals/configuration.md) system can read secrets stored with the Secret Manager tool described in this article.
+This document shows how you can use the Secret Manager tool in development to keep secrets out of your code. The most important point is you should never store passwords or other sensitive data in source code, and you shouldn't use production secrets in development and test mode. You can instead use the [configuration](xref:fundamentals/configuration/index) system to read these values from environment variables or from values stored using the Secret Manager tool. The Secret Manager tool helps prevent sensitive data from being checked into source control. The [configuration](xref:fundamentals/configuration/index) system can read secrets stored with the Secret Manager tool described in this article.
 
 The Secret Manager tool is used only in development. You can safeguard Azure test and production secrets with the [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) configuration provider. See [Azure Key Vault configuration provider](https://docs.microsoft.com/aspnet/core/security/key-vault-configuration) for more information.
 
 ## Environment variables
 
-To avoid storing app secrets in code or in local configuration files, you store secrets in environment variables. You can setup the [configuration](../fundamentals/configuration.md) framework to read values from environment variables by calling `AddEnvironmentVariables`. You can then use environment variables to override configuration values for all previously specified configuration sources.
+To avoid storing app secrets in code or in local configuration files, you store secrets in environment variables. You can setup the [configuration](xref:fundamentals/configuration/index) framework to read values from environment variables by calling `AddEnvironmentVariables`. You can then use environment variables to override configuration values for all previously specified configuration sources.
 
 For example, if you create a new ASP.NET Core web app with individual user accounts, it will add a default connection string to the *appsettings.json* file in the project with the key `DefaultConnection`. The default connection string is setup to use LocalDB, which runs in user mode and doesn't require a password. When you deploy your application to a test or production server, you can override the `DefaultConnection` key value with an environment variable setting that contains the connection string (potentially with sensitive credentials) for a test or production database server.
 
@@ -32,42 +30,25 @@ For example, if you create a new ASP.NET Core web app with individual user accou
 
 ## Secret Manager
 
-The Secret Manager tool stores sensitive data for development work outside of your project tree. The Secret Manager tool is a project tool that can be used to store secrets for a [.NET Core](https://microsoft.com/net/core) project during development. With the Secret Manager tool, you can associate app secrets with a specific project and share them across multiple projects.
+The Secret Manager tool stores sensitive data for development work outside of your project tree. The Secret Manager tool is a project tool that can be used to store secrets for a [.NET Core](https://www.microsoft.com/net/core) project during development. With the Secret Manager tool, you can associate app secrets with a specific project and share them across multiple projects.
 
 >[!WARNING]
 > The Secret Manager tool does not encrypt the stored secrets and should not be treated as a trusted store. It is for development purposes only. The keys and values are stored in a JSON configuration file in the user profile directory.
 
-### Visual Studio 2017: Installing the Secret Manager tool
+## Installing the Secret Manager tool
+
+# [Visual Studio](#tab/visual-studio)
 
 Right-click the project in Solution Explorer, and select **Edit \<project_name\>.csproj** from the context menu. 
 Add the highlighted line to the *.csproj* file, and save to restore the associated NuGet package:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
-Right-click the project in Solution Explorer, and select **Manage User Secrets** from the context menu. This gesture adds a new `UserSecretsId` node within a `PropertyGroup` of the *.csproj* file. It also opens a `secrets.json` file in the text editor.
+Right-click the project in Solution Explorer again, and select **Manage User Secrets** from the context menu. This gesture adds a new `UserSecretsId` node within a `PropertyGroup` of the *.csproj* file, as highlighted in the following sample:
 
-Add the following to `secrets.json`:
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
-```json
-{
-    "MySecret": "ValueOfMySecret"
-}
-```
-
-### Visual Studio 2015: Installing the Secret Manager tool
-
-Open the project's `project.json` file. Add a reference to `Microsoft.Extensions.SecretManager.Tools` within the `tools` property, and save to restore the associated NuGet package:
-
-```json
-"tools": {
-    "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final",
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-},
-```
-
-Right-click the project in Solution Explorer, and select **Manage User Secrets** from the context menu. This gesture adds a new `userSecretsId` property to `project.json`. It also opens a `secrets.json` file in the text editor.
-
-Add the following to `secrets.json`:
+Saving the modified *.csproj* file also opens a `secrets.json` file in the text editor. Replace the contents of the `secrets.json` file with the following code:
 
 ```json
 {
@@ -75,11 +56,11 @@ Add the following to `secrets.json`:
 }
 ```
 
-### Visual Studio Code or Command Line: Installing the Secret Manager tool
+# [Visual Studio Code](#tab/visual-studio-code)
 
-Add `Microsoft.Extensions.SecretManager.Tools` to the *.csproj* file and run `dotnet restore`.
+Add `Microsoft.Extensions.SecretManager.Tools` to the *.csproj* file and run `dotnet restore`. You can use the same steps to install the Secret Manager Tool using for the command line.
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?highlight=21)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
 
 Test the Secret Manager tool by running the following command:
 
@@ -96,7 +77,7 @@ The Secret Manager tool operates on project-specific configuration settings that
 
 Add a `UserSecretsId` for your project in the *.csproj* file:
 
-[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets.csproj?range=7-9&highlight=2)]
+[!code-xml[Main](app-secrets/sample/UserSecrets/UserSecrets-after.csproj?highlight=4)]
 
 Use the Secret Manager tool to set a secret. For example, in a command window from the project directory, enter the following:
 
@@ -111,6 +92,8 @@ dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\w
 ```
 
 You can also use the Secret Manager tool to list, remove and clear app secrets.
+
+-----
 
 ## Accessing user secrets via configuration
 
@@ -140,4 +123,4 @@ You should not write code that depends on the location or format of the data sav
 
 ## Additional Resources
 
-* [Configuration](../fundamentals/configuration.md)
+* [Configuration](xref:fundamentals/configuration/index)

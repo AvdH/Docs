@@ -51,7 +51,7 @@ Use Azure Mobile Services to send push notifications to a mobile device.
 ## Develop Mobile Sites
 
 
-### [Deploy an Mobile-Friendly ASP.NET MVC 5 Web Application on Windows Azure Web Sites](https://www.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/)
+### [Deploy an Mobile-Friendly ASP.NET MVC 5 Web Application on Windows Azure Web Sites](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-deploy-aspnet-mvc-mobile-app)
 
 This tutorial will teach you the basics of how to deploy an MVC 5 application to a Windows Azure web site and create mobile-friendly views using responsive Bootstrap design.
 
@@ -61,7 +61,7 @@ This tutorial will teach you the basics of how to deploy an MVC 5 application to
 This How To describes various ways to serve pages optimized for mobile devices from your ASP.NET Web Forms / MVC application, and suggests architectural and design issues to consider when targeting a broad range of devices.
 
 
-### [Detect the latest mobile devices using 51degrees.mobi Foundation](http://51degrees.codeplex.com/)
+### [Detect the latest mobile devices using 51degrees.mobi Foundation](https://github.com/51Degrees/dotNET-Device-Detection)
 
 51degrees.mobi Foundation is a third-party open source project that enhances ASP.NET's Request.Browser API so you can easily detect recently-released mobile devices including Windows Phone 7, Android, and Apple iPad.
 

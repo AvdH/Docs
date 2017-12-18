@@ -5,18 +5,18 @@ description: Build a web API with ASP.NET Core MVC and Visual Studio for Windows
 keywords: ASP.NET Core,WebAPI,Web API,REST,HTTP,Service,HTTP Service
 ms.author: riande
 manager: wpickett
-ms.date: 8/15/2017
+ms.date: 08/15/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-web-api
 ---
 
-#Create a web API with ASP.NET Core MVC and Visual Studio for Windows
+#Create a web API with ASP.NET Core and Visual Studio for Windows
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Mike Wasson](https://github.com/mikewasson)
 
-In this tutorial, you’ll build a web API for managing a list of "to-do" items. You won’t build a UI.
+This tutorial builds a web API for managing a list of "to-do" items. A user interface (UI) is not created.
 
 There are 3 versions of this tutorial:
 
@@ -32,7 +32,7 @@ There are 3 versions of this tutorial:
 
 [!INCLUDE[install 2.0](../includes/install2.0.md)]
 
-See [this PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf) for the ASP.NET Core 1.1 version.
+See [this PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf) for the ASP.NET Core 1.1 version.
 
 ## Create the project
 
@@ -48,23 +48,23 @@ In the **New ASP.NET Core Web Application - TodoApi** dialog, select the **Web A
 
 ### Launch the app
 
-In Visual Studio, press CTRL+F5 to launch the app. Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly-chosen port number. Chrome, Edge, and Firefox display the following:
+In Visual Studio, press CTRL+F5 to launch the app. Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly chosen port number. Chrome, Microsoft Edge, and Firefox display the following output:
 
 ```
 ["value1","value2"]
-``` 
+```
 
 ### Add a model class
 
-A model is an object that represents the data in your application. In this case, the only model is a to-do item.
+A model is an object that represents the data in the app. In this case, the only model is a to-do item.
 
 Add a folder named "Models". In Solution Explorer, right-click the project. Select **Add** > **New Folder**. Name the folder *Models*.
 
-Note: The model classes go anywhere in your project, but the *Models* folder is used by convention.
+Note: The model classes go anywhere in the project. The *Models* folder is used by convention for model classes.
 
 Add a `TodoItem` class. Right-click the *Models* folder and select **Add** > **Class**. Name the class `TodoItem` and select **Add**.
 
-Replace the generated code with the following:
+Update the `TodoItem` class with the following code:
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
 
@@ -76,7 +76,7 @@ The *database context* is the main class that coordinates Entity Framework funct
 
 Add a `TodoContext` class. Right-click the *Models* folder and select **Add** > **Class**. Name the class `TodoContext` and select **Add**.
 
-Replace the generated code with the following:
+Replace the class with the following code:
 
 [!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
 
@@ -84,17 +84,17 @@ Replace the generated code with the following:
 
 ### Add a controller
 
-In Solution Explorer, right-click the *Controllers* folder. Select **Add** > **New Item**. In the **Add New Item** dialog, select the **Web  API Controller Class** template. Name the class `TodoController`.
+In Solution Explorer, right-click the *Controllers* folder. Select **Add** > **New Item**. In the **Add New Item** dialog, select the **Web API Controller Class** template. Name the class `TodoController`.
 
 ![Add new Item dialog with controller in search box and web API controller selected](first-web-api/_static/new_controller.png)
 
-Replace the generated code with the following:
+Replace the class with the following code:
 
 [!INCLUDE[code and get todo items](../includes/webApi/getTodoItems.md)]
-  
+
 ### Launch the app
 
-In Visual Studio, press CTRL+F5 to launch the app. Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly chosen port number. If you're using Chrome, Edge or Firefox, the data will be displayed. If you're using IE, IE will prompt to you open or save the *values.json* file. Navigate to the `Todo` controller we just created `http://localhost:port/api/todo`.
+In Visual Studio, press CTRL+F5 to launch the app. Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly chosen port number. Navigate to the `Todo` controller at `http://localhost:port/api/todo`.
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 

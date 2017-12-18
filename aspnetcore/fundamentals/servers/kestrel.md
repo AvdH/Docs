@@ -2,7 +2,7 @@
 title: Kestrel web server implementation in ASP.NET Core
 author: tdykstra
 description: Introduces Kestrel, the cross-platform web server for ASP.NET Core based on libuv.
-keywords: ASP.NET Core, Kestrel, libuv, url prefixes
+keywords: ASP.NET Core,Kestrel,libuv,url prefixes
 ms.author: tdykstra
 manager: wpickett
 ms.date: 08/02/2017
@@ -15,7 +15,7 @@ ms.custom: H1Hack27Feb2017
 ---
 # Introduction to Kestrel web server implementation in ASP.NET Core
 
-By [Tom Dykstra](http://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher), and [Stephen Halter](https://twitter.com/halter73)
+By [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher), and [Stephen Halter](https://twitter.com/halter73)
 
 Kestrel is a cross-platform [web server for ASP.NET Core](index.md) based on [libuv](https://github.com/libuv/libuv), a cross-platform asynchronous I/O library. Kestrel is the web server that is included by default in ASP.NET Core project templates. 
 
@@ -29,11 +29,11 @@ Kestrel is supported on all platforms and versions that .NET Core supports.
 
 # [ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[View or download sample code for 2.x](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample2)
+[View or download sample code for 2.x](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample2) ([how to download](xref:tutorials/index#how-to-download-a-sample))
 
 # [ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[View or download sample code for 1.x](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample1)
+[View or download sample code for 1.x](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/sample1) ([how to download](xref:tutorials/index#how-to-download-a-sample))
 
 ---
 

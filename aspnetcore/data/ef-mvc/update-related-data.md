@@ -2,7 +2,7 @@
 title: ASP.NET Core MVC with EF Core - Update Related Data - 7 of 10
 author: tdykstra
 description: In this tutorial you'll update related data by updating foreign key fields and navigation properties.
-keywords: ASP.NET Core, Entity Framework Core, related data, joins
+keywords: ASP.NET Core,Entity Framework Core,related data,joins
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -83,17 +83,17 @@ In *Views/Courses/Delete.cshtml*, add a course number field at the top and chang
 
 [!code-html[Main](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
-In *Views/Course/Details.cshtml*, make the same change that you just did for *Delete.cshtml*.
+In *Views/Courses/Details.cshtml*, make the same change that you just did for *Delete.cshtml*.
 
 ### Test the Course pages
 
-Run the **Create** page (display the Course Index page and click **Create New**) and enter data for a new course:
+Run the app, select the **Courses** tab, click **Create New**, and enter data for a new course:
 
 ![Course Create page](update-related-data/_static/course-create.png)
 
 Click **Create**. The Courses Index page is displayed with the new course added to the list. The department name in the Index page list comes from the navigation property, showing that the relationship was established correctly.
 
-Run the **Edit** page (click **Edit** on a course in the Course Index page ).
+Click **Edit** on a course in the Courses Index page.
 
 ![Course Edit page](update-related-data/_static/course-edit.png)
 
@@ -155,7 +155,7 @@ In *Views/Instructors/Edit.cshtml*, add a new field for editing the office locat
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
-Run the page (select the **Instructors** tab and then click **Edit** on an instructor). Change the **Office Location** and click **Save**.
+Run the app, select the **Instructors** tab, and then click **Edit** on an instructor. Change the **Office Location** and click **Save**.
 
 ![Instructor Edit page](update-related-data/_static/instructor-edit-office.png)
 
@@ -187,7 +187,7 @@ The code in the `PopulateAssignedCourseData` method reads through all Course ent
 
 Next, add the code that's executed when the user clicks **Save**. Replace the `EditPost` method with the following code, and add a new method that updates the `Courses` navigation property of the Instructor entity.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=3,12,13,25,39-40&name=snippet_EditPostCourses)]
+[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=1-31)]
 
@@ -215,7 +215,7 @@ In *Views/Instructors/Edit.cshtml*, add a **Courses** field with an array of che
 
 <a id="notepad"></a>
 > [!NOTE] 
-> When you paste the code in Visual Studio, line breaks will be changed in a way that breaks the code.  Press Ctrl+Z one time to undo the automatic formatting.  This will fix the line breaks so that they look like what you see here. The indentation doesn't have to be perfect, but the `@</tr><tr>`, `@:<td>`, `@:</td>`, and `@:</tr>` lines must each be on a single line as shown or you'll get a runtime error. With the block of new code selected, press Tab three times to line up the new code with the existing code.
+> When you paste the code in Visual Studio, line breaks will be changed in a way that breaks the code.  Press Ctrl+Z one time to undo the automatic formatting.  This will fix the line breaks so that they look like what you see here. The indentation doesn't have to be perfect, but the `@</tr><tr>`, `@:<td>`, `@:</td>`, and `@:</tr>` lines must each be on a single line as shown or you'll get a runtime error. With the block of new code selected, press Tab three times to line up the new code with the existing code. You can check the status of this problem [here](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
@@ -223,7 +223,7 @@ This code creates an HTML table that has three columns. In each column is a chec
 
 When the check boxes are initially rendered, those that are for courses assigned to the instructor have checked attributes, which selects them (displays them checked).
 
-Run the Instructor Index page, and click **Edit** on an instructor to see the **Edit** page.
+Run the app, select the **Instructors** tab, and click **Edit** on an instructor to see the **Edit** page.
 
 ![Instructor Edit page with courses](update-related-data/_static/instructor-edit-courses.png)
 
@@ -283,7 +283,7 @@ In *Views/Instructor/Create.cshtml*, add an office location text box and check b
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
-Test by running the **Create** page and adding an instructor. 
+Test by running the app and creating an instructor. 
 
 ## Handling Transactions
 

@@ -2,7 +2,7 @@
 title: Filters
 author: ardalis
 description: Learn how *Filters* work and how to use them in ASP.NET Core MVC.
-keywords: ASP.NET Core, filters, mvc filters, action filters, authorization filters, resource filters, result filters, exception filters
+keywords: ASP.NET Core,filters,mvc filters,action filters,authorization filters,resource filters,result filters,exception filters
 ms.author: tdykstra
 manager: wpickett
 ms.date: 12/12/2016
@@ -15,7 +15,7 @@ uid: mvc/controllers/filters
 
 # Filters
 
-By [Tom Dykstra](https://github.com/tdykstra/) and [Steve Smith](http://ardalis.com)
+By [Tom Dykstra](https://github.com/tdykstra/) and [Steve Smith](https://ardalis.com/)
 
 *Filters* in ASP.NET Core MVC allow you to run code before or after certain stages in the request processing pipeline.
 
@@ -78,7 +78,7 @@ You can implement `IFilterFactory` on your own attribute implementations as anot
 
 The framework includes built-in attribute-based filters that you can subclass and customize. For example, the following Result filter adds a header to the response.
 
-<a name=add-header-attribute></a>
+<a name="add-header-attribute"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
@@ -111,9 +111,9 @@ A filter can be added to the pipeline at one of three *scopes*. You can add a fi
 
 ### Default order of execution
 
-When there are multiple filters for a particular stage of the pipeline, scope determines the default order of filter execution.  Global filters surround class filters, which in turn surround method filters. This is sometimes referred to as "Russian doll" nesting, as each increase in scope is wrapped around the previous scope, like a [nesting doll](https://en.wikipedia.org/wiki/Matryoshka_doll). You generally get the desired overriding behavior without having to explicitly determine ordering.
+When there are multiple filters for a particular stage of the pipeline, scope determines the default order of filter execution.  Global filters surround class filters, which in turn surround method filters. This is sometimes referred to as "Russian doll" nesting, as each increase in scope is wrapped around the previous scope, like a [nesting doll](https://wikipedia.org/wiki/Matryoshka_doll). You generally get the desired overriding behavior without having to explicitly determine ordering.
 
-Asa result of this nesting, the *after* code of filters runs in the reverse order of the *before* code. The sequence looks like this:
+As a result of this nesting, the *after* code of filters runs in the reverse order of the *before* code. The sequence looks like this:
 
 * The *before* code of filters applied globally
   * The *before* code of filters applied to controllers
@@ -164,7 +164,7 @@ The `Order` property trumps scope when determining the order in which filters wi
 
 You can short-circuit the filter pipeline at any point by setting the `Result` property on the `context` parameter provided to the filter method. For instance, the following Resource filter prevents the rest of the pipeline from executing.
 
-<a name=short-circuiting-resource-filter></a>
+<a name="short-circuiting-resource-filter"></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
@@ -185,7 +185,7 @@ If your filters have dependencies that you need to access from DI, there are sev
 * `IFilterFactory` implemented on your attribute
 
 > [!NOTE]
-> One dependency you might want to get from DI is a logger. However, avoid creating and using filters purely for logging purposes, since the [built-in framework logging features](../../fundamentals/logging.md) may already provide what you need. If you're going to add logging to your filters, it should focus on business domain concerns or behavior specific to your filter, rather than MVC actions or other framework events.
+> One dependency you might want to get from DI is a logger. However, avoid creating and using filters purely for logging purposes, since the [built-in framework logging features](xref:fundamentals/logging/index) may already provide what you need. If you're going to add logging to your filters, it should focus on business domain concerns or behavior specific to your filter, rather than MVC actions or other framework events.
 
 ### ServiceFilterAttribute
 

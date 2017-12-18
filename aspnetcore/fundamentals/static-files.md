@@ -1,8 +1,8 @@
 ---
 title: Working with static files in ASP.NET Core
 author: rick-anderson
-description: Working with Static Files
-keywords: ASP.NET Core, static files, static assets, HTML, CSS, JavaScript
+description: Learn how to work with static files in ASP.NET Core.
+keywords: ASP.NET Core,static files,static assets,HTML,CSS,JavaScript
 ms.author: riande
 manager: wpickett
 ms.date: 4/07/2017
@@ -13,15 +13,16 @@ ms.prod: asp.net-core
 uid: fundamentals/static-files
 ms.custom: H1Hack27Feb2017
 ---
-# Introduction to working with static files in ASP.NET Core
 
-<a name=fundamentals-static-files></a>
+# Working with static files in ASP.NET Core
+
+<a name="fundamentals-static-files"></a>
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.NET Core app can serve directly to clients.
 
-[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample)
+[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/static-files/sample) ([how to download](xref:tutorials/index#how-to-download-a-sample))
 
 ## Serving static files
 
@@ -63,6 +64,8 @@ A request to `http://<app>/StaticFiles/test.png` will serve the *test.png* file.
 `StaticFileOptions()` can set response headers. For example, the code below sets up static file serving from the *wwwroot* folder and sets the `Cache-Control` header to make them publicly cacheable for 10 minutes (600 seconds):
 
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupAddHeader.cs?name=snippet1)]
+
+The [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) method is available from the [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) package. Add `using Microsoft.AspNetCore.Http;` to your *csharp* file if the method is unavailable.
 
 ![Response headers showing the Cache-Control header has been added](static-files/_static/add-header.png)
 

@@ -1,7 +1,7 @@
 ---
 title: Create an ASP.NET Core app with user data protected by authorization
 author: rick-anderson
-keywords: ASP.NET Core, MVC, authorization, roles, security, administrator
+keywords: ASP.NET Core,MVC,authorization,roles,security,administrator
 ms.author: riande
 manager: wpickett
 ms.date: 05/22/2017
@@ -99,11 +99,11 @@ dotnet ef database update
 
 ### Require SSL and authenticated users
 
-In the `ConfigureServices` method of the *Startup.cs* file, add the [RequireHttpsAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/RequireHttpsAttribute/index.html.md#Microsoft.AspNetCore.Mvc.RequireHttpsAttribute.md) authorization filter:
+In the `ConfigureServices` method of the *Startup.cs* file, add the [RequireHttpsAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) authorization filter:
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=snippet_SSL&highlight=1)]
 
-If you're using Visual Studio, see [Set up IIS Express for SSL/HTTPS](xref:security/enforcing-ssl#set-up-iis-express-for-sslhttps). To redirect HTTP requests to HTTPS, see [URL Rewriting Middleware](xref:fundamentals/url-rewriting). If you are using Visual Studio Code or testing on local platform that doesn't include a test certificate for SSL:
+To redirect HTTP requests to HTTPS, see [URL Rewriting Middleware](xref:fundamentals/url-rewriting). If you are using Visual Studio Code or testing on local platform that doesn't include a test certificate for SSL:
 
 - Set `"LocalTest:skipSSL": true` in the *appsettings.json* file.
 
@@ -157,7 +157,7 @@ Create a `ContactAdministratorsAuthorizationHandler` class in the  *Authorizatio
 
 ## Register the authorization handlers
 
-Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/ServiceCollectionServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped.md). The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core. Register the handlers with the service collection so they will be available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection). Add the following code to the end of `ConfigureServices`:
+Services using Entity Framework Core must be registered for [dependency injection](xref:fundamentals/dependency-injection) using [AddScoped](/aspnet/core/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions). The `ContactIsOwnerAuthorizationHandler` uses ASP.NET Core [Identity](xref:security/authentication/identity), which is built on Entity Framework Core. Register the handlers with the service collection so they will be available to the `ContactsController` through [dependency injection](xref:fundamentals/dependency-injection). Add the following code to the end of `ConfigureServices`:
 
 [!code-csharp[Main](secure-data/samples/final/Startup.cs?name=AuthorizationHandlers)]
 
@@ -182,7 +182,7 @@ Update the `ContactsController` constructor:
 
 ### Add a contact operations requirements class
 
-Add the `ContactOperationsRequirements` class to the *Authorization* folder. This class  contain the requirements our app supports:
+Add the `ContactOperations` class to the *Authorization* folder. This class  contain the requirements our app supports:
 
 [!code-csharp[Main](secure-data/samples/final/Authorization/ContactOperations.cs)]
 
@@ -260,7 +260,7 @@ Create a contact in the administrators browser. Copy the URL for delete and edit
 
 Follow these instructions to create the starter app.
 
-* Create an **ASP.NET Core Web Application** using [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) named "ContactManager"
+* Create an **ASP.NET Core Web Application** using [Visual Studio 2017](https://www.visualstudio.com/) named "ContactManager"
 
   * Create the app with **Individual User Accounts**.
   * Name it "ContactManager" so your namespace will match the namespace use in the sample.
@@ -300,7 +300,7 @@ Add the `SeedData` class to the *Data* folder. If you've downloaded the sample, 
 
 Add the highlighted code to the end of the `Configure` method in the *Startup.cs* file:
 
-[!code-csharp[Main](secure-data/samples/Starter/Startup.cs?name=Configure&highlight=28-)]
+[!code-csharp[Main](secure-data/samples/starter/Startup.cs?name=Configure&highlight=28-)]
 
 Test that the app seeded the database. The seed method does not run if there are any rows in the contact DB.
 
@@ -311,10 +311,10 @@ Test that the app seeded the database. The seed method does not run if there are
 
 [!code-csharp[Main](secure-data/samples/final/Authorization/ContactOperations.cs)]
 
-<a name=secure-data-add-resources-label></a>
+<a name="secure-data-add-resources-label"></a>
 
 ### Additional resources
 
 * [ASP.NET Core Authorization Lab](https://github.com/blowdart/AspNetAuthorizationWorkshop). This lab goes into more detail on the security features introduced in this tutorial.
 * [Authorization in ASP.NET Core : Simple, role, claims-based and custom](index.md)
-* [Custom Policy-Based Authorization](policies.md)
+* [Custom policy-based authorization](policies.md)

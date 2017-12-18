@@ -2,7 +2,7 @@
 title: ASP.NET Core MVC with EF Core - Advanced - 10 of 10
 author: tdykstra
 description: This tutorial introduces several topics that are useful to be aware of when you go beyond the basics of developing ASP.NET web applications that use Entity Framework Core.
-keywords: ASP.NET Core, Entity Framework Core, raw sql, examine sql, repository pattern, unit of work pattern, automatic change detection, existing database
+keywords: ASP.NET Core,Entity Framework Core,raw sql,examine sql,repository pattern,unit of work pattern,automatic change detection,existing database
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -57,7 +57,7 @@ Add a using statement:
 
 [!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
 
-Run the About page. It displays the same data it did before.
+Run the app and go to the About page. It displays the same data it did before.
 
 ![About page](advanced/_static/about.png)
 
@@ -85,7 +85,7 @@ In *Views/Courses/UpdateCourseCredits.cshtml*, replace the template code with th
 
 [!code-html[Main](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
-Run the `UpdateCourseCredits` method by selecting the **Courses** tab, then adding "/UpdateCourseCredits" to the end of the URL in the browser's address bar (for example: `http://localhost:5813/Course/UpdateCourseCredits)`. Enter a number in the text box:
+Run the `UpdateCourseCredits` method by selecting the **Courses** tab, then adding "/UpdateCourseCredits" to the end of the URL in the browser's address bar (for example: `http://localhost:5813/Courses/UpdateCourseCredits`). Enter a number in the text box:
 
 ![Update Course Credits page](advanced/_static/update-credits.png)
 
@@ -105,7 +105,7 @@ Sometimes it's helpful to be able to see the actual SQL queries that are sent to
 
 Open *StudentsController.cs* and in the `Details` method set a breakpoint on the `if (student == null)` statement.
 
-Run the application in debug mode, and go to the Details page for a student.
+Run the app in debug mode, and go to the Details page for a student.
 
 Go to the **Output** window showing debug output, and you see the query:
 
@@ -167,7 +167,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## Entity Framework Core source code and development plans
 
-The source code for Entity Framework Core is available at [https://github.com/aspnet/EntityFramework](https://github.com/aspnet/EntityFramework). Besides source code, you can get nightly builds, issue tracking, feature specs, design meeting notes, [the roadmap for future development](https://github.com/aspnet/EntityFramework/wiki/Roadmap), and more. You can file bugs, and you can contribute your own enhancements to the EF source code.
+The source code for Entity Framework Core is available at [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Besides source code, you can get nightly builds, issue tracking, feature specs, design meeting notes, [the roadmap for future development](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap), and more. You can file bugs, and you can contribute your own enhancements to the EF source code.
 
 Although the source code is open, Entity Framework Core is fully supported as a Microsoft product. The Microsoft Entity Framework team keeps control over which contributions are accepted and tests all code changes to ensure the quality of each release.
 
@@ -175,7 +175,7 @@ Although the source code is open, Entity Framework Core is fully supported as a 
 
 To reverse engineer a data model including entity classes from an existing database, use the [scaffold-dbcontext](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext) command. See the [getting-started tutorial](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db).
 
-<a id="dynamic-linq">
+<a id="dynamic-linq"></a>
 ## Use dynamic LINQ to simplify sort selection code
 
 The [third tutorial in this series](sort-filter-page.md) shows how to write LINQ code by hard-coding column names in a `switch` statement. With two columns to choose from, this works fine, but if you have many columns the code could get verbose. To solve that problem, you can use the `EF.Property` method to specify the name of the property as a string. To try out this approach, replace the `Index` method in the `StudentsController` with the following code.

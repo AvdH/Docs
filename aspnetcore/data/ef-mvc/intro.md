@@ -2,7 +2,7 @@
 title: ASP.NET Core MVC with Entity Framework Core - Tutorial 1 of 10
 author: tdykstra
 description: 
-keywords: ASP.NET Core, Entity Framework Core, tutorial
+keywords: ASP.NET Core,Entity Framework Core,tutorial
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -16,6 +16,8 @@ uid: data/ef-mvc/intro
 
 By [Tom Dykstra](https://github.com/tdykstra) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
+A Razor Pages version of this tutorial is available [here](xref:data/ef-rp/intro). The Razor Pages version is easier to follow and covers more EF features. We recommend you follow the [Razor Pages version of this tutorial](xref:data/ef-rp/intro).
+
 The Contoso University sample web application demonstrates how to create ASP.NET Core 2.0 MVC web applications using Entity Framework (EF) Core 2.0 and Visual Studio 2017.
 
 The sample application is a web site for a fictional Contoso University. It includes functionality such as student admission, course creation, and instructor assignments. This is the first in a series of tutorials that explain how to build the Contoso University sample application from scratch.
@@ -25,7 +27,7 @@ The sample application is a web site for a fictional Contoso University. It incl
 EF Core 2.0 is the latest version of EF but does not yet have all the features of EF 6.x. For information about how to choose between EF 6.x and EF Core, see [EF Core vs. EF6.x](https://docs.microsoft.com/ef/efcore-and-ef6/). If you choose EF 6.x, see [the previous version of this tutorial series](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 > [!NOTE]
-> * For the ASP.NET Core 1.1 version of this tutorial, see the [VS 2017 Update 2 version of this tutorial in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/efmvc/intro/_static/efmvc1.1.pdf).
+> * For the ASP.NET Core 1.1 version of this tutorial, see the [VS 2017 Update 2 version of this tutorial in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/_static/efmvc1.1.pdf).
 > * For the Visual Studio 2015 version of this tutorial, see the [VS 2015 version of ASP.NET Core documentation in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf).
 
 ## Prerequisites
@@ -34,7 +36,7 @@ EF Core 2.0 is the latest version of EF but does not yet have all the features o
 
 ## Troubleshooting
 
-If you run into a problem you can't resolve, you can generally find the solution by comparing your code to the [completed project](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). For a list of common errors and how to solve them, see [the Troubleshooting section of the last tutorial in the series](advanced.md#common-errors). If you don't find what you need there, you can post a question to StackOverflow.com for  [ASP.NET Core](http://stackoverflow.com/questions/tagged/asp.net-core) or [EF Core](http://stackoverflow.com/questions/tagged/entity-framework-core).
+If you run into a problem you can't resolve, you can generally find the solution by comparing your code to the [completed project](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final). For a list of common errors and how to solve them, see [the Troubleshooting section of the last tutorial in the series](advanced.md#common-errors). If you don't find what you need there, you can post a question to StackOverflow.com for  [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) or [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 > [!TIP] 
 > This is a series of 10 tutorials, each of which builds on what is done in earlier tutorials.  Consider saving a copy of the project after each successful tutorial completion.  Then if you run into problems, you can start over from the previous tutorial instead of going back to the beginning of the whole series.
@@ -57,7 +59,7 @@ Open Visual Studio and create a new ASP.NET Core C# web project named "ContosoUn
 
 * From the **File** menu, select **New > Project**.
 
-* From the left pane, select **Templates > Visual C# > Web**.
+* From the left pane, select **Installed > Visual C# > Web**.
 
 * Select the **ASP.NET Core Web Application** project template.
 
@@ -89,11 +91,11 @@ Open *Views/Shared/_Layout.cshtml* and make the following changes:
 
 The changes are highlighted.
 
-[!code-html[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
+[!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,30,36-39,48)]
 
 In *Views/Home/Index.cshtml*, replace the contents of the file with the following code to replace the text about ASP.NET and MVC with text about this application:
 
-[!code-html[](intro/samples/cu/Views/Home/Index.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
 Press CTRL+F5 to run the project or choose **Debug > Start Without Debugging** from the menu. You see the home page with tabs for the pages you'll create in these tutorials.
 
@@ -187,7 +189,7 @@ To register `SchoolContext` as a service, open *Startup.cs*, and add the highlig
 
 [!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=3-4)]
 
-The name of the connection string is passed in to the context by calling a method on a `DbContextOptionsBuilder` object. For local development, the [ASP.NET Core configuration system](../../fundamentals/configuration.md) reads the connection string from the *appsettings.json* file.
+The name of the connection string is passed in to the context by calling a method on a `DbContextOptionsBuilder` object. For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.
 
 Add `using` statements for `ContosoUniversity.Data`  and `Microsoft.EntityFrameworkCore` namespaces, and then build the project.
 
@@ -237,15 +239,10 @@ The automatic creation of CRUD action methods and views is known as scaffolding.
 
 * Right-click the **Controllers** folder in **Solution Explorer** and select **Add > New Scaffolded Item**.
 
-* In the **Add MVC Dependencies** dialog, select **Minimal Dependencies**, and select **Add**.
+If the **Add MVC Dependencies** dialog appears:
 
-  ![Add dependencies](intro/_static/add-depend.png)
-
-  Visual Studio adds the dependencies needed to scaffold a controller. The only change in the project file is the addition of the `Microsoft.VisualStudio.Web.CodeGeneration.Design` package.
-
-  A *ScaffoldingReadMe.txt* file is created which you can delete.
-
-* Once again, right-click the **Controllers** folder in **Solution Explorer** and select **Add > New Scaffolded Item**.
+* [Update Visual Studio to the latest version](https://www.visualstudio.com/downloads/). Visual Studio versions prior to 15.5 show this dialog.
+* If you can't update, select **ADD**, and then follow the add controller steps again.
 
 * In the **Add Scaffold** dialog box:
 
@@ -283,7 +280,7 @@ You'll learn about the asynchronous programming elements in this code later in t
 
 The *Views/Students/Index.cshtml* view displays this list in a table:
 
-[!code-html[](intro/samples/cu/Views/Students/Index1.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index1.cshtml)]
 
 Press CTRL+F5 to run the project or choose **Debug > Start Without Debugging** from the menu.
 
@@ -311,9 +308,9 @@ Right-click the **Student** table and click **View Data** to see the columns tha
 
 ![Student table in SSOX](intro/_static/ssox-student-table.png)
 
-The *.mdf* and *.ldf* database files are in the *C:Users<yourusername>* folder.
+The *.mdf* and *.ldf* database files are in the *C:\Users\<yourusername>* folder.
 
-Because you're calling `EnsureCreated` in the initializer method that runs on app start, you could now make a change to the `Student class`, delete the database, run the application again, and the database would automatically be re-created to match your change. For example, if you add an `EmailAddress` property to the `Student` class, you'll see a new `EmailAddress` column in the re-created table.
+Because you're calling `EnsureCreated` in the initializer method that runs on app start, you could now make a change to the `Student` class, delete the database, run the application again, and the database would automatically be re-created to match your change. For example, if you add an `EmailAddress` property to the `Student` class, you'll see a new `EmailAddress` column in the re-created table.
 
 ## Conventions
 

@@ -27,7 +27,6 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 - [Intro to ASP.NET MVC 5](introduction/getting-started.md)
 - [Introduction to ASP.NET MVC](https://pluralsight.com/training/Player?author=scott-allen&amp;name=mvc4-building-m1-intro&amp;mode=live&amp;clip=0&amp;course=mvc4-building) (video by Pluralsight)
 - [Understanding Model View Controller in Asp.Net MVC](http://www.dotnet-tricks.com/Tutorial/mvc/DIYG060113-Understanding-Model-View-Controller-in-Asp.Net-MVC.html) (short blog intro).
-- [ASP.NET MVC Quick Guide](http://qkview.com/techbrij/aspnet-mvc-4)
 - [ASP.NET MVC Overview](../older-versions-1/overview/asp-net-mvc-overview.md)
 - [Free 6 hour online course - Developing ASP.NET MVC 4 Web Applications Jump Start](https://weblogs.asp.net/jgalloway/archive/2013/10/09/free-6-hour-online-course-developing-asp-net-mvc-4-web-applications-jump-start.aspx)
 - [Learning MVC - Part 1: Introduction to MVC Architecture and Separation of Concerns](http://www.codeproject.com/Articles/620195/Learning-MVC-Part-1-Introduction-to-MVC-Architectu)
@@ -39,8 +38,7 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 
 - [Selecting Cultures for Localization in ASP.NET](http://weblog.west-wind.com/posts/2014/Mar/27/Auto-Selecting-Cultures-for-Localization-in-ASPNET)
 - [Nesting Layouts in MVC](http://astutelogic.com/nesting-layouts-in-mvc/) by Russell Waite
-- [Create an ASP.NET MVC app with auth and SQL DB and deploy to Azure App Service](https://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/)
-- [MVC 5 App with Facebook and Google OAuth2 Sign-on](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
+- [Create an ASP.NET MVC 5 App with Facebook and Google OAuth2 Sign-on](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [Understanding ASP.NET MVC Filters and Attributes](http://www.dotnet-tricks.com/Tutorial/mvc/b11a280114-Understanding-ASP.NET-MVC-Filters-and-Attributes.html)
 - [Lifecycle of an ASP.NET MVC 5 Application](lifecycle-of-an-aspnet-mvc-5-application.md) (PDF)
 - [What not to do in ASP.NET, and what to do instead](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
@@ -52,7 +50,6 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 
 ## Microsoft Azure
 
-- [Create an ASP.NET MVC app with auth and SQL DB and deploy to Azure App Service](https://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/)
 - [The World's Greatest Azure Demo](http://www.troyhunt.com/2014/03/the-worlds-greatest-azure-demo.html)
 - [Videos from //build/ 2014](https://channel9.msdn.com/Events/Build/2014?sort=sequential&amp;direction=desc&amp;page=2&amp;tag%5B0%5D=asp.net&amp;tag%5B1%5D=azure&amp;tag%5B2%5D=visual-studio&amp;tag%5B3%5D=web#theSessions): (Azure and Visual Studio)
 
@@ -84,8 +81,7 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 
 ## Security
 
-- [MVC 5 App with Facebook and Google OAuth2 Sign-on](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
-- [Create an ASP.NET MVC app with auth and SQL DB and deploy to Azure App Service](https://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/)
+- [Create an ASP.NET MVC 5 App with Facebook and Google OAuth2 Sign-on](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [What not to do in ASP.NET, and what to do instead](../../../aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead.md)
 - [How to build (and how not to build) a secure "remember me" feature](http://www.troyhunt.com/2013/07/how-to-build-and-how-not-to-build.html) by Troy Hunt
 - Video: [The New Authentication Model for Web, Mobile, and Cloud Applications by Lucas Adams, Stuart Kwan](https://channel9.msdn.com/Events/Build/2014/2-601)
@@ -144,7 +140,6 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 - [ASP.NET Data Access Content Map](https://msdn.microsoft.com/en-us/library/6759sth4.aspx)
 - [Building an ASP.NET MVC4 Application with EF and Web API](http://net.tutsplus.com/tutorials/building-an-asp-net-mvc4-application-with-ef-and-webapi/)
 - [DataList in ASP.NET MVC &amp; KnockoutJS](http://www.devcurry.com/2013/04/datalist-in-aspnet-mvc-knockoutjs.html)
-- [Create an ASP.NET MVC app with auth and SQL DB and deploy to Azure App Service](https://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/)
 
 <a id="WF2MGC"></a>
 
@@ -153,7 +148,6 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 - [Migrating ASP.NET Web Forms to the MVC Pattern with the ASP.NET Web API](https://msdn.microsoft.com/en-us/magazine/jj991978.aspx)
 - Matthew Kane's video, [Deep Integration of MVC and WebForms](https://channel9.msdn.com/Events/aspConf/aspConf/Deep-Integration-of-MVC-and-WebForms)
 - [ASP.NET MVC - Living in a Web Forms World](http://www.eworldui.net/blog/post/2008/05/09/ASPNET-MVC-Living-in-a-Web-Forms-World.aspx)
-- Video: [Codeplex - Conversion to MVC](http://www.viddler.com/v/d8b6294c)
 - [Web Forms to MVC](http://www.davepaquette.com/archive/2013/12/30/so-you-inherited-an-asp-net-web-forms-application.aspx)
 - [Integrating ASP.NET Web Forms and ASP.NET MVC](http://rachelappel.com/integrating-aspnet-web-forms-and-aspnetmvc)
 - [Adopting ASP.NET MVC enhancements in an Existing Web Forms Project](http://www.devcurry.com/2013/05/adopting-aspnet-mvc-enhancements-in.html)
@@ -203,7 +197,7 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 - [TypeScripted Knockout in ASP.NET MVC](http://www.dotnetcurry.com/ShowArticle.aspx?ID=939)
 - [DataList in ASP.NET MVC &amp; KnockoutJS](http://www.devcurry.com/2013/04/datalist-in-aspnet-mvc-knockoutjs.html)
 - [Cascading drop down with knockout.js &amp; ASP.NET MVC](http://www.dotnetexpertguide.com/2012/06/cascading-dropdown-knockoutjs-aspnet.html)
-- [Loading KnockoutJS View Models from ASP.Net MVC, for faster page loads](http://lostechies.com/erichexter/2012/11/29/loading-knockout-view-models-from-asp-net-mvc/)
+- [Loading KnockoutJS View Models from ASP.NET MVC, for faster page loads](http://lostechies.com/erichexter/2012/11/29/loading-knockout-view-models-from-asp-net-mvc/)
 - [Master-Details view using Knockout and ASP.NET MVC](http://www.devcurry.com/2013/04/master-details-knockout-aspnet-mvc.html)
 - [AngularJS – Post data using the $resource Service in an ASP.NET MVC app](http://www.devcurry.com/2013/07/angularjs-post-data-using-resource.html#.Uegw7CZ8NaQ)
 
@@ -225,7 +219,7 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 - [DropDownListFor with ASP.NET MVC](http://odetocode.com/blogs/scott/archive/2013/03/11/dropdownlistfor-with-asp-net-mvc.aspx)
 - [DropDownList Helper Data Binding in ASP.NET MVC](http://www.itorian.com/2013/02/dropdownlist-helper-data-binding-in-mvc.html)
 - [Pluralsight video showing how to work with JavaScript and Ajax](http://www.pluralsight-training.net/microsoft/players/PSODPlayer?author=scott-allen&amp;name=mvc3-building-ajax&amp;mode=live&amp;clip=0&amp;course=aspdotnet-mvc3-intro)
-- [Cascading DropDownList in ASP.Net MVC](https://blogs.msdn.com/b/rickandy/archive/2012/01/09/cascasding-dropdownlist-in-asp-net-mvc.aspx?CommentPosted=true#commentmessage)
+- [Cascading DropDownList in ASP.NET MVC](https://blogs.msdn.com/b/rickandy/archive/2012/01/09/cascasding-dropdownlist-in-asp-net-mvc.aspx?CommentPosted=true#commentmessage)
 - [CascadingDropDown jQuery Plugin for ASP.NET MVC](https://weblogs.asp.net/rajbk/Contents/Item/Display/31)
 - [MVC, JsonResult, DateTime and TimeZone](http://msprogrammer.serviciipeweb.ro/2013/03/10/mvc-jsonresult-datetime-and-timezone/)
 - [MVC- Custom Validation - required DropDownList](http://codeblockdrive.blogspot.in/2012/12/mvc-custom-validation-required.html)
@@ -272,8 +266,7 @@ by [Rick Anderson](https://github.com/Rick-Anderson)
 
 ## Azure and ASP.NET MVC
 
-- [Multi-Tier Application Using Storage Tables, Queues, and Blobs](https://www.windowsazure.com/en-us/develop/net/tutorials/multi-tier-web-site/1-overview/)
-- [Create an ASP.NET MVC app with auth and SQL DB and deploy to Azure App Service](https://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/)
+- [Multi-Tier Application Using Storage Tables, Queues, and Blobs](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36)
 - [Windows Azure Web Sites: Quick-and-Easy Hosting as a Service](https://msdn.microsoft.com/en-us/magazine/jj883953.aspx)
 - [Configuration Tips For ASP.NET MVC 4 on a Azure Website](http://odetocode.com/Blogs/scott/archive/2012/08/07/configuration-tips-for-asp-net-mvc-4-on-a-windows.aspx)
 - [Episode 85 - Azure, Windows 8, and MVC 4 Demos](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-85-Windows-Azure-Sample-Content-Review) (video)

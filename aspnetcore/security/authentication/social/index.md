@@ -1,11 +1,11 @@
 ---
-title: Enabling authentication using Facebook, Google and other external
+title: Enabling authentication using Facebook, Google, and other external providers
 author: rick-anderson
-description: 
-keywords: ASP.NET Core, authentication, social, authentication providers, google, facebook, twitter, microsoft account
+description: This tutorial demonstrates how to build an ASP.NET Core 2.x app using OAuth 2.0 with external authentication providers.
+keywords: ASP.NET Core,authentication,social,authentication providers,google,facebook,twitter,microsoft account
 ms.author: riande
 manager: wpickett
-ms.date: 11/1/2016
+ms.date: 11/01/2016
 ms.topic: article
 ms.assetid: eda7ee17-f38c-462e-8d1d-63f459901cf3
 ms.technology: aspnet
@@ -13,9 +13,9 @@ ms.prod: asp.net-core
 uid: security/authentication/social/index
 ---
 
-# Enabling authentication using Facebook, Google and other external providers
+# Enabling authentication using Facebook, Google, and other external providers
 
-<a name=security-authentication-social-logins></a>
+<a name="security-authentication-social-logins"></a>
 
 By [Valeriy Novytskyy](https://github.com/01binary) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -25,9 +25,9 @@ This tutorial demonstrates how to build an ASP.NET Core 2.x app that enables use
 
 ![Social media icons for Facebook, Twitter, Google plus, and Windows](index/_static/social.png)
 
-Enabling users to sign in with their existing credentials is convenient for the users and shifts many of the complexities of managing the sign-in process onto a third party. For examples of how social logins can drive traffic and customer conversions, see case studies by [Facebook](https://developers.facebook.com/case-studies) and [Twitter](https://dev.twitter.com/resources/case-studies).
+Enabling users to sign in with their existing credentials is convenient for the users and shifts many of the complexities of managing the sign-in process onto a third party. For examples of how social logins can drive traffic and customer conversions, see case studies by [Facebook](https://www.facebook.com/unsupportedbrowser) and [Twitter](https://dev.twitter.com/resources/case-studies).
 
-Note: Packages presented here abstract a great deal of complexity of the OAuth authentication flow, but understanding the details may become necessary when troubleshooting. Many resources are available; for example, see [Introduction to OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) or [Understanding OAuth 2](http://www.bubblecode.net/en/2016/01/22/understanding-oauth2/). Some issues can be resolved by looking at the [ASP.NET Core source code for the provider packages](https://github.com/aspnet/Security/tree/dev/src).
+Note: Packages presented here abstract a great deal of complexity of the OAuth authentication flow, but understanding the details may become necessary when troubleshooting. Many resources are available; for example, see [Introduction to OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) or [Understanding OAuth 2](http://www.bubblecode.net/2016/01/22/understanding-oauth2/). Some issues can be resolved by looking at the [ASP.NET Core source code for the provider packages](https://github.com/aspnet/Security/tree/dev/src).
 
 ## Create a New ASP.NET Core Project
 
@@ -43,15 +43,20 @@ Note: Packages presented here abstract a great deal of complexity of the OAuth a
 
 Note: This tutorial applies to ASP.NET Core 2.0 SDK version which can be selected at the top of the wizard.
 
+## Apply migrations
+
+* Run the app and select the **Log in** link.
+* Select the **Register as a new user** link.
+* Enter the email and password for the new account, and then select **Register**.
+* Follow the instructions to apply migrations.
+
 ## Require SSL
 
 OAuth 2.0 requires the use of SSL for authentication over the HTTPS protocol.
 
 Note: Projects created using **Web Application** or **Web API** project templates for ASP.NET Core 2.x are automatically configured to enable SSL and launch with https URL if the **Individual User Accounts** option was selected on **Change Authentication dialog** in the project wizard as shown above.
 
-* Learn how to enable SSL manually by following the steps in [Setting up HTTPS for development in ASP.NET Core](xref:security/https) topic.
-
-* Then, require SSL on your site by following the steps in [Enforcing SSL in an ASP.NET Core app](xref:security/enforcing-ssl) topic.
+* Require SSL on your site by following the steps in [Enforcing SSL in an ASP.NET Core app](xref:security/enforcing-ssl) topic.
 
 ## Use SecretManager to store tokens assigned by login providers
 

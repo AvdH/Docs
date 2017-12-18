@@ -2,10 +2,10 @@
 title: Two-factor authentication with SMS
 author: rick-anderson
 description: Shows how to set up two-factor authentication (2FA) with ASP.NET Core
-keywords: ASP.NET Core,SMS, authentication,2FA,two-factor authentication,two factor authentication 
+keywords: ASP.NET Core,SMS,authentication,2FA,two-factor authentication,two factor authentication
 ms.author: riande
 manager: wpickett
-ms.date: 8/15/2017
+ms.date: 08/15/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
@@ -52,7 +52,7 @@ We will later store this value with the secret-manager tool within the key `SMSA
 
 ### Provide credentials for the SMS service
 
-We'll use the [Options pattern](xref:fundamentals/configuration#options-config-objects) to access the user account and key settings. 
+We'll use the [Options pattern](xref:fundamentals/configuration/options) to access the user account and key settings. 
 
    * Create a class to fetch the secure SMS key. For this sample, the `SMSoptions` class is created in the *Services/SMSoptions.cs* file.
 

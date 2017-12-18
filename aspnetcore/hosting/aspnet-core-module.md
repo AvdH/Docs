@@ -2,7 +2,7 @@
 title: ASP.NET Core Module configuration reference
 author: guardrex
 description: How to configure the ASP.NET Core Module for hosting ASP.NET Core applications.
-keywords: ASP.NET Core, ancm, core module, iis, stdout logging, environment variable, env var, subapplication, subapp, appoffline, app_offline, 502, schema
+keywords: ASP.NET Core,ancm,core module,iis,stdout logging,environment variable,env var,subapplication,subapp,appoffline,app_offline,502,schema
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -14,7 +14,7 @@ uid: hosting/aspnet-core-module
 ---
 # ASP.NET Core Module configuration reference
 
-By [Luke Latham](https://github.com/GuardRex), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Sourabh Shirhatti](https://twitter.com/sshirhatti)
+By [Luke Latham](https://github.com/guardrex), [Rick Anderson](https://twitter.com/RickAndMSFT), and [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
 This document provides details on how to configure the ASP.NET Core Module for hosting ASP.NET Core applications. For an introduction to the ASP.NET Core Module and installation instructions, see the [ASP.NET Core Module overview](xref:fundamentals/servers/aspnet-core-module).
 
@@ -61,7 +61,7 @@ The *web.config* example below is for a [self-contained deployment](https://docs
 | startupTimeLimit | <p>Optional integer attribute.</p><p>Duration in seconds that the module will wait for the executable to start a process listening on the port. If this time limit is exceeded, the module will kill the process. The module will attempt to launch the process again when it receives a new request and will continue to attempt to restart the process on subsequent incoming requests unless the application fails to start **rapidFailsPerMinute** number of times in the last rolling minute.</p><p>The default value is 120.</p> |
 | shutdownTimeLimit | <p>Optional integer attribute.</p><p>Duration in seconds for which the module will wait for the executable to gracefully shutdown when the *app_offline.htm* file is detected.</p><p>The default value is 10.</p> |
 | rapidFailsPerMinute | <p>Optional integer attribute.</p><p>Specifies the number of times the process specified in **processPath** is allowed to crash per minute. If this limit is exceeded, the module will stop launching the process for the remainder of the minute.</p><p>The default value is 10.</p> |
-| requestTimeout | <p>Optional timespan attribute.</p><p>Specifies the duration for which the ASP.NET Core Module will wait for a response from the process listening on %ASPNETCORE_PORT%.</p><p>The default value is "00:02:00".</p> |
+| requestTimeout | <p>Optional timespan attribute.</p><p>Specifies the duration for which the ASP.NET Core Module will wait for a response from the process listening on %ASPNETCORE_PORT%.</p><p>The default value is "00:02:00".</p><p>The `requestTimeout` must be specified in whole minutes only, otherwise it defaults to 2 minutes.</p> |
 | stdoutLogEnabled | <p>Optional Boolean attribute.</p><p>If true, **stdout** and **stderr** for the process specified in **processPath** will be redirected to the file specified in **stdoutLogFile**.</p><p>The default value is false.</p> |
 | stdoutLogFile | <p>Optional string attribute.</p><p>Specifies the relative or absolute file path for which **stdout** and **stderr** from the process specified in **processPath** will be logged. Relative paths are relative to the root of the site. Any path starting with '.' will be relative to the site root and all other paths will be treated as absolute paths. Any folders provided in the path must exist in order for the module to create the log file. The process ID, timestamp (*yyyyMdhms*), and file extension (*.log*) with underscore delimiters are added to the last segment of the **stdoutLogFile** provided.</p><p>The default value is `aspnetcore-stdout`.</p> |
 | forwardWindowsAuthToken | true or false.</p><p>If true, the token will be forwarded to the child process listening on %ASPNETCORE_PORT% as a header 'MS-ASPNETCORE-WINAUTHTOKEN' per request. It is the responsibility of that process to call CloseHandle on this token per request.</p><p>The default value is true.</p> |
@@ -93,7 +93,7 @@ While the *app_offline.htm* file is present, the ASP.NET Core Module will respon
 
 ## Start-up error page
 
-If the ASP.NET Core Module fails to launch the backend process or the backend process starts but fails to listen on the configured port, you will see an HTTP 502.5 status code page. To suppress this page and revert to the default IIS 502 status code page, use the `disableStartUpErrorPage` attribute. For more information on configuring custom error messages, see [HTTP Errors `<httpErrors>`](https://www.iis.net/configreference/system.webserver/httperrors).
+If the ASP.NET Core Module fails to launch the backend process or the backend process starts but fails to listen on the configured port, you will see an HTTP 502.5 status code page. To suppress this page and revert to the default IIS 502 status code page, use the `disableStartUpErrorPage` attribute. For more information on configuring custom error messages, see [HTTP Errors `<httpErrors>`](https://docs.microsoft.com/iis/configuration/system.webServer/httpErrors/).
 
 ![502 Status Page](aspnet-core-module/_static/ANCM-502_5.png)
 

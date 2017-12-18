@@ -14,7 +14,7 @@ uid: mvc/models/model-binding
 ---
 # Model Binding
 
-By [Rachel Appel](http://github.com/rachelappel)
+By [Rachel Appel](https://github.com/rachelappel)
 
 ## Introduction to model binding
 
@@ -27,8 +27,6 @@ When MVC receives an HTTP request, it routes it to a specific action method of a
 `http://contoso.com/movies/edit/2`
 
 Since the route template looks like this, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` routes to the `Movies` controller, and its `Edit` action method. It also accepts an optional parameter called `id`. The code for the action method should look something like this:
-
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
 ```csharp
 public IActionResult Edit(int? id)
@@ -59,15 +57,25 @@ so that the form fields remain filled with the user's input for their convenienc
 
 In order for binding to happen the class must have a public default constructor and member to be bound must be public writable properties. When model binding happens the class will only be instantiated using the public default constructor, then the properties can be set.
 
-When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter. If binding fails, MVC does not throw an error. You can query for model state errors by checking the `ModelState.IsValid` property.
+When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter. Otherwise, the default model binding behavior sets parameters to their default values depending on their type:
 
-Note: Each entry in the controller's `ModelState` property is a `ModelStateEntry` containing an `Errors property`. It's rarely necessary to query this collection yourself. Use `ModelState.IsValid` instead.
+* `T[]`: With the exception of arrays of type `byte[]`, binding sets parameters of type `T[]` to `Array.Empty<T>()`. Arrays of type `byte[]` are set to `null`.
+
+* Reference Types: Binding creates an instance of a class with the default constructor without setting properties. However, model binding sets `string` parameters to `null`.
+
+* Nullable Types: Nullable types are set to `null`. In the above example, model binding sets `id` to `null` since it is of type `int?`.
+
+* Value Types: Non-nullable value types of type `T` are set to `default(T)`. For example, model binding will set a parameter `int id` to 0. Consider using model validation or nullable types rather than relying on default values.
+
+If binding fails, MVC does not throw an error. Every action which accepts user input should check the `ModelState.IsValid` property.
+
+Note: Each entry in the controller's `ModelState` property is a `ModelStateEntry` containing an `Errors` property. It's rarely necessary to query this collection yourself. Use `ModelState.IsValid` instead.
 
 Additionally, there are some special data types that MVC must consider when performing model binding:
 
 * `IFormFile`, `IEnumerable<IFormFile>`: One or more uploaded files that are part of the HTTP request.
 
-* `CancelationToken`: Used to cancel activity in asynchronous controllers.
+* `CancellationToken`: Used to cancel activity in asynchronous controllers.
 
 These types can be bound to action parameters or to properties on a class type.
 
@@ -99,19 +107,17 @@ Request data can come in a variety of formats including JSON, XML and many other
 > There can be at most one parameter per action decorated with `[FromBody]`. The ASP.NET Core MVC run-time delegates the responsibility of reading the request stream to the formatter. Once the request stream is read for a parameter, it's generally not possible to read the request stream again for binding other `[FromBody]` parameters.
 
 > [!NOTE]
-> The `JsonInputFormatter` is the default formatter and is based on [Json.NET](http://www.newtonsoft.com/json).
+> The `JsonInputFormatter` is the default formatter and is based on [Json.NET](https://www.newtonsoft.com/json).
 
 ASP.NET selects input formatters based on the [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) header and the type of the parameter, unless there is an attribute applied to it specifying otherwise. If you'd like to use XML or another format you must configure it in the *Startup.cs* file, but you may first have to obtain a reference to `Microsoft.AspNetCore.Mvc.Formatters.Xml` using NuGet. Your startup code should look something like this:
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
-
 ```csharp
 public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc()
-          .AddXmlSerializerFormatters();
+{
+    services.AddMvc()
+        .AddXmlSerializerFormatters();
    }
-   ```
+```
 
 Code in the *Startup.cs* file contains a `ConfigureServices` method with a `services` argument you can use to build up services for your ASP.NET app. In the sample, we are adding an XML formatter as a service that MVC will provide for this app. The `options` argument passed into the `AddMvc` method allows you to add and manage filters, formatters, and other system options from MVC upon app startup. Then apply the `Consumes` attribute to controller classes or action methods to work with the format you want.
 

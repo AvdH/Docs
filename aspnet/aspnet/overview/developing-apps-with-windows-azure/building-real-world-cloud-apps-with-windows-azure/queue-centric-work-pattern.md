@@ -86,7 +86,7 @@ To implement the queue pattern, we need to make two changes to the Fix It app.
 - When a user submits a new Fix It task, put the task in the queue, instead of writing it to the database.
 - Create a back-end service that processes messages in the queue.
 
-For the queue, we'll use the [Azure Queue Storage Service](https://www.windowsazure.com/en-us/develop/net/how-to-guides/queue-service/). Another option is to use [Azure Service Bus](https://www.windowsazure.com/en-us/documentation/services/service-bus/).
+For the queue, we'll use the [Azure Queue Storage Service](https://www.windowsazure.com/en-us/develop/net/how-to-guides/queue-service/). Another option is to use [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
 
 To decide which queue service to use, consider how your app needs to send and receive the messages in the queue:
 
@@ -110,7 +110,7 @@ We'll do this work in the constructor and `SendMessageAsync` method of a new `Fi
 
 [!code-csharp[Main](queue-centric-work-pattern/samples/sample1.cs?highlight=11-12,16,18-25)]
 
-Here we are using the [Json.NET](http://json.codeplex.com/) library to serialize the fixit to JSON format. You can use whatever serialization approach you prefer. JSON has the advantage of being human-readable, while being less verbose than XML.
+Here we are using the [Json.NET](https://github.com/JamesNK/Newtonsoft.Json) library to serialize the fixit to JSON format. You can use whatever serialization approach you prefer. JSON has the advantage of being human-readable, while being less verbose than XML.
 
 Production-quality code would add error handling logic, pause if the database became unavailable, handle recovery more cleanly, create the queue on application start-up, and manage "[poison" messages](https://msdn.microsoft.com/en-us/library/ms789028(v=vs.110).aspx). (A poison message is a message that cannot be processed for some reason. You don't want poison messages to sit in the queue, where the worker role will continually try to process them, fail, try again, fail, and so on.)
 

@@ -26,6 +26,10 @@ A lot of people rely on customers to let them know when their application is dow
 
 ## Buy or rent a telemetry solution
 
+> [!NOTE]
+> This article was written before [Application Insights](https://azure.microsoft.com/services/application-insights/) was released. Application Insights is the preferred approach for telemetry solutions on Azure. See [Set up Application Insights for your ASP.NET website](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) for more information.
+
+
 One of the things that's great about the cloud environment is that it's really easy to buy or rent your way to victory. Telemetry is an example. Without a lot of effort you can get a really good telemetry system up and running, very cost-effectively. There are a bunch of great partners that integrate with Azure, and some of them have free tiers – so you can get basic telemetry for nothing. Here are just a few of the ones currently available on Azure:
 
 - [New Relic](http://newrelic.com/)
@@ -131,7 +135,7 @@ In .NET System.Diagnostics tracing, logs can be assigned Error, Warning, Info, a
 
 While it's worthwhile to have logging always on in production, another best practice is to implement a logging framework that enables you to adjust at run-time the level of detail that you're logging, without redeploying or restarting your application. For example when you use the tracing facility in `System.Diagnostics` you can create Error, Warning, Info, and Debug/Verbose logs. We recommend you always log Error, Warning, and Info logs in production, and you'll want to be able to dynamically add Debug/Verbose logging for troubleshooting on a case-by-case basis.
 
-Web Apps in Azure App Service have built-in support for writing `System.Diagnostics` logs to the file system, Table storage, or Blob storage. You can select different logging levels for each storage destination, and you can change the logging level on the fly without restarting your application. The Blob storage support makes it easier to run [HDInsight](https://www.windowsazure.com/en-us/documentation/services/hdinsight/) analysis jobs on your application logs, because HDInsight knows how to work with Blob storage directly.
+Web Apps in Azure App Service have built-in support for writing `System.Diagnostics` logs to the file system, Table storage, or Blob storage. You can select different logging levels for each storage destination, and you can change the logging level on the fly without restarting your application. The Blob storage support makes it easier to run [HDInsight](https://docs.microsoft.com/azure/hdinsight/) analysis jobs on your application logs, because HDInsight knows how to work with Blob storage directly.
 
 ### Log Exceptions
 
@@ -147,7 +151,7 @@ We highly recommend that you write a log every time your app calls out to a serv
 
 What we recommend doing when you create a production application is to create a simple *ILogger* interface and stick some methods in it. This makes it easy to change the logging implementation later and not have to go through all your code to do it. We could be using the `System.Diagnostics.Trace` class throughout the Fix It app, but instead we're using it under the covers in a logging class that implements *ILogger*, and we make *ILogger* method calls throughout the app.
 
-That way, if you ever want to make your logging richer, you can replace [`System.Diagnostics.Trace`](https://www.windowsazure.com/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/#apptracelogs) with whatever logging mechanism you want. For example, as your app grows you might decide that you want to use a more comprehensive logging package such as [NLog](http://nlog-project.org/) or [Enterprise Library Logging Application Block](https://msdn.microsoft.com/en-us/library/dn440731(v=pandp.60).aspx). ([Log4Net](http://logging.apache.org/log4net/) is another popular logging framework but it doesn't do asynchronous logging.)
+That way, if you ever want to make your logging richer, you can replace [`System.Diagnostics.Trace`](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio#apptracelogs) with whatever logging mechanism you want. For example, as your app grows you might decide that you want to use a more comprehensive logging package such as [NLog](http://nlog-project.org/) or [Enterprise Library Logging Application Block](https://msdn.microsoft.com/en-us/library/dn440731(v=pandp.60).aspx). ([Log4Net](http://logging.apache.org/log4net/) is another popular logging framework but it doesn't do asynchronous logging.)
 
 One possible reason for using a framework such as NLog is to facilitate dividing up logging output into separate high-volume and high-value data stores. That helps you to efficiently store large volumes of INFORM data that you don't need to execute fast queries against, while maintaining quick access to ACT data.
 
@@ -215,13 +219,13 @@ This code basically says that anywhere a constructor needs an *ILogger* interfac
 
 ## Built-in logging support in Azure
 
-Azure supports the following kinds of [logging for Web Apps in Azure App Service](https://www.windowsazure.com/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/):
+Azure supports the following kinds of [logging for Web Apps in Azure App Service](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio):
 
 - System.Diagnostics tracing (you can turn on and off and set levels on the fly without restarting the site).
 - Windows Events.
 - IIS Logs (HTTP/FREB).
 
-Azure supports the following kinds of [logging in Cloud Services](https://www.windowsazure.com/en-us/develop/net/common-tasks/diagnostics/):
+Azure supports the following kinds of [logging in Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics):
 
 - System.Diagnostics tracing.
 - Performance counters.
@@ -239,7 +243,7 @@ After you enable logging in Azure, you can see logs in the Visual Studio Output 
 
 ![Streaming logs menu](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-nologsyet.png)
 
-You can also have logs written to your storage account and view them with any tool that can access the Azure Storage Table service, such as **Server Explorer** in Visual Studio or [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/).
+You can also have logs written to your storage account and view them with any tool that can access the Azure Storage Table service, such as **Server Explorer** in Visual Studio or [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 ![Logs in Server Explorer](http://wacomdpsstorage.blob.core.windows.net/articlesmedia/content-ppe.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/20140115062810/tws-storagelogs.png)
 
@@ -272,7 +276,7 @@ Documentation mainly about troubleshooting:
 
 - [Azure Troubleshooting &amp; Debugging blog](https://blogs.msdn.com/b/kwill/).
 - [AzureTools – The Diagnostic Utility used by the Azure Developer Support Team](https://blogs.msdn.com/b/kwill/archive/2013/08/26/azuretools-the-diagnostic-utility-used-by-the-windows-azure-developer-support-team.aspx?Redirected=true). Introduces and provides a download link for a tool that can be used on an Azure VM to download and run a wide variety of diagnostic and monitoring tools. Useful when you need to diagnose an issue on a particular VM.
-- [Troubleshoot a web app in Azure App Service using Visual Studio](https://www.windowsazure.com/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/). A step-by-step tutorial for getting started with System.Diagnostics tracing and remote debugging.
+- [Troubleshoot a web app in Azure App Service using Visual Studio](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio). A step-by-step tutorial for getting started with System.Diagnostics tracing and remote debugging.
 
 Videos:
 

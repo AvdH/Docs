@@ -1,8 +1,8 @@
 ---
 title: Key Storage Format
 author: tdykstra
-description: 
-keywords: ASP.NET Core,
+description: This document explains the implementation details of the ASP.NET Core data protection key storage format.
+keywords: ASP.NET Core,data protection,key storage
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -14,7 +14,7 @@ uid: security/data-protection/implementation/key-storage-format
 ---
 # Key Storage Format
 
-<a name=data-protection-implementation-key-storage-format></a>
+<a name="data-protection-implementation-key-storage-format"></a>
 
 Objects are stored at rest in XML representation. The default directory for key storage is %LOCALAPPDATA%\ASP.NET\DataProtection-Keys\.
 

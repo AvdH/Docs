@@ -2,7 +2,7 @@
 title: ASP.NET Core MVC with EF Core - Inheritance - 9 of 10
 author: tdykstra
 description: This tutorial will show you how to implement inheritance in the data model, using Entity Framework Core in an ASP.NET Core application.
-keywords: ASP.NET Core, Entity Framework Core, inheritance
+keywords: ASP.NET Core,Entity Framework Core,inheritance
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -88,7 +88,7 @@ dotnet ef migrations add Inheritance
 
 Don't run the `database update` command yet. That command will result in lost data because it will drop the Instructor table and rename the Student table to Person. You need to provide custom code to preserve existing data.
 
-Open *Migrations\<timestamp>_Inheritance.cs* and replace the `Up` method with the following code:
+Open *Migrations/\<timestamp>_Inheritance.cs* and replace the `Up` method with the following code:
 
 [!code-csharp[Main](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
@@ -127,7 +127,7 @@ dotnet ef database update
 
 ## Test with inheritance implemented
 
-Run the site and try various pages. Everything works the same as it did before.
+Run the app and try various pages. Everything works the same as it did before.
 
 In **SQL Server Object Explorer**, expand **Data Connections/SchoolContext** and then **Tables**, and you see that the Student and Instructor tables have been replaced by a Person table. Open the Person table designer and you see that it has all of the columns that used to be in the Student and Instructor tables.
 

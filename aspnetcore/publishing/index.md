@@ -1,4 +1,4 @@
-﻿---
+---
 title: Hosting and deployment overview - ASP.NET Core
 author: tdykstra
 description: Overview of how to set up hosting environments and deploy ASP.NET Core apps to them.
@@ -52,7 +52,11 @@ If your app uses the [Kestrel](xref:fundamentals/servers/kestrel) web server and
 
 Deployment often requires additional tasks besides copying the output from `dotnet publish` to a server. For example, you might want to include extra files in the *publish* folder, or exclude files from it. Visual Studio uses MSBuild for web deployment, and you can customize MSBuild to do many other tasks during deployment. For more information, see [Publish profiles in Visual Studio](xref:publishing/web-publishing-vs) and the [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) book.
 
-You can deploy directly from Visual Studio to Azure App Service by using [the Publish Web feature](xref:tutorials/publish-to-azure-webapp-using-vs) or by using [built-in Git support](xref:publishing/azure-continuous-deployment). Visual Studio Team Services supports [continuous deployment to Azure App Service](https://www.visualstudio.com/en-us/docs/build/aspnet/core/quick-to-azure).
+You can deploy directly from Visual Studio to Azure App Service by using [the Publish Web feature](xref:tutorials/publish-to-azure-webapp-using-vs) or by using [built-in Git support](xref:publishing/azure-continuous-deployment). Visual Studio Team Services supports [continuous deployment to Azure App Service](https://www.visualstudio.com/docs/build/aspnet/core/quick-to-azure).
+
+## Publishing to Azure
+
+See [Publish an ASP.NET Core web app to Azure App Service using Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) for instructions on how to publish this app to Azure using Visual Studio.  The app can also be published to Azure from the [command line](xref:tutorials/publish-to-azure-webapp-using-cli).
 
 ## Additional resources
 

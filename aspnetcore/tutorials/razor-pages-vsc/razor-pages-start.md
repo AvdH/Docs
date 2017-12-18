@@ -5,7 +5,7 @@ description: Getting started with Razor Pages in ASP.NET Core using Visual Studi
 keywords: ASP.NET Core,Razor Pages,scaffolding,Entity Framework Core,EF,EF Core,database,mac,macOS,Visual Studio Code,Code
 ms.author: riande
 manager: wpickett
-ms.date: 8/27/2017
+ms.date: 08/27/2017
 ms.topic: get-started-article
 ms.technology: aspnet
 ms.prod: aspnet-core
@@ -21,7 +21,7 @@ This tutorial teaches the basics of building an ASP.NET Core Razor Pages web app
 
 Install the following:
 
-* [.NET Core 2.0.0 SDK](https://dot.net/core) or later
+* [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) or later
 * [Visual Studio Code](https://code.visualstudio.com)
 * VS Code [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 

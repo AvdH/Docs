@@ -1,4 +1,4 @@
-The highlighted code above shows the movie database context being added to the [Dependency Injection](xref:fundamentals/dependency-injection) container. The line following `services.AddDbContext<MvcMovieContext>(options =>` is not shown (see your code). It specifies the database to use and the connection string. `=>` is a [lambda operator](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator).
+The highlighted code above shows the movie database context being added to the [Dependency Injection](xref:fundamentals/dependency-injection) container (In the *Startup.cs* file). `services.AddDbContext<MvcMovieContext>(options =>` specifies the database to use and the connection string. `=>` is a [lambda operator](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator).
 
 Open the *Controllers/MoviesController.cs* file and examine the constructor:
 
@@ -6,9 +6,9 @@ Open the *Controllers/MoviesController.cs* file and examine the constructor:
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_1)] 
 
-The constructor uses [Dependency Injection](xref:fundamentals/dependency-injection) to inject the database context (`MvcMovieContext `) into the controller. The database context is used in each of the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.
+The constructor uses [Dependency Injection](xref:fundamentals/dependency-injection) to inject the database context (`MvcMovieContext `) into the controller. The database context is used in each of the [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.
 
-<a name=strongly-typed-models-keyword-label></a>
+<a name="strongly-typed-models-keyword-label"></a>
 
 ## Strongly typed models and the @model keyword
 

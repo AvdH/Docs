@@ -2,7 +2,7 @@
 title: ASP.NET Core MVC with EF Core - Migrations - 4 of 10
 author: tdykstra
 description: In this tutorial, you start using the EF Core migrations feature for managing data model changes in an ASP.NET Core MVC application.
-keywords: ASP.NET Core, Entity Framework Core, migrations
+keywords: ASP.NET Core,Entity Framework Core,migrations
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -115,7 +115,7 @@ In the command window, enter the following command to create the database and ta
 dotnet ef database update
 ```
 
-The output from the command is similar to the `migrations add` command, except that you see logs for the SQL commands that set up the database. Most of the logs are omitted in the following sample output. If you prefer not to see this level of detail in log messages, you can change the log levels in the *appsettings.Development.json* file. For more information, see [Introduction to logging](xref:fundamentals/logging).
+The output from the command is similar to the `migrations add` command, except that you see logs for the SQL commands that set up the database. Most of the logs are omitted in the following sample output. If you prefer not to see this level of detail in log messages, you can change the log level in the *appsettings.Development.json* file. For more information, see [Introduction to logging](xref:fundamentals/logging/index).
 
 ```text
 info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]

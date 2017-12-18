@@ -1,15 +1,16 @@
 ---
-title: Adding a model to an ASP.NET MVC Core app
+title: Add a model to an ASP.NET Core MVC app
 author: rick-anderson
 description: Add a model to a simple ASP.NET Core app.
-keywords: ASP.NET Core, MVC, scaffold, scaffolding
+keywords: ASP.NET Core,MVC,scaffold,scaffolding
 ms.author: riande
-manager: wpickett
-ms.date: 03/30/2017
+manager: wpickett  
+ms.devlang: csharp 
+ms.date: 09/22/2017
 ms.topic: get-started-article
 ms.assetid: 8dc28498-eeee-1638-b903-b593059e9f39
 ms.technology: aspnet
-ms.prod: asp.net-core
+ms.prod: .net-core
 uid: tutorials/first-mvc-app-mac/adding-model
 ---
 
@@ -68,7 +69,7 @@ If you get the error `No executable found matching command "dotnet-aspnet-codege
 
  * You are in the project directory. The project directory has the *Program.cs*, *Startup.cs* and *.csproj* files.
  * Your dotnet version is 1.1 or higher. Run `dotnet` to get the version.
- * You have added the `<DotNetCliToolReference>` elment to the [MvcMovie.csproj file](#prepare-the-project-for-scaffolding).
+ * You have added the `<DotNetCliToolReference>` element to the [MvcMovie.csproj file](#prepare-the-project-for-scaffolding).
  
 <!--
 > [!NOTE]
@@ -80,7 +81,7 @@ The scaffolding engine creates the following:
 * A movies controller (*Controllers/MoviesController.cs*)
 * Razor view files for Create, Delete, Details, Edit and Index pages (*Views/Movies/\*.cshtml*)
 
-The automatic creation of [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (create, read, update, and delete) action methods and views is known as *scaffolding*. You'll soon have a fully functional web application that lets you manage a movie database.
+The automatic creation of [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (create, read, update, and delete) action methods and views is known as *scaffolding*. You'll soon have a fully functional web application that lets you manage a movie database.
 
 ### Add the files to Visual Studio
 

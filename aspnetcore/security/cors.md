@@ -1,8 +1,8 @@
 ---
 title: Enabling Cross-Origin Requests (CORS)
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: This document introduces CORS as a standard for allowing or rejecting cross-origin requests in an ASP.NET Core app.
+keywords: ASP.NET Core,CORS,cross origin
 ms.author: riande
 manager: wpickett
 ms.date: 05/17/2017
@@ -18,7 +18,7 @@ By [Mike Wasson](https://github.com/mikewasson), [Shayne Boyer](https://twitter.
 
 Browser security prevents a web page from making AJAX requests to another domain. This restriction is called the *same-origin policy*, and prevents a malicious site from reading sensitive data from another site. However, sometimes you might want to let other sites make cross-origin requests to your web API.
 
-[Cross Origin Resource Sharing](http://www.w3.org/TR/cors/) (CORS) is a W3C standard that allows a server to relax the same-origin policy. Using CORS, a server can explicitly allow some cross-origin requests while rejecting others. CORS is safer and more flexible than earlier techniques such as [JSONP](http://en.wikipedia.org/wiki/JSONP). This topic shows how to enable CORS in an ASP.NET Core application.
+[Cross Origin Resource Sharing](http://www.w3.org/TR/cors/) (CORS) is a W3C standard that allows a server to relax the same-origin policy. Using CORS, a server can explicitly allow some cross-origin requests while rejecting others. CORS is safer and more flexible than earlier techniques such as [JSONP](https://wikipedia.org/wiki/JSONP). This topic shows how to enable CORS in an ASP.NET Core application.
 
 ## What is "same origin"?
 
@@ -214,7 +214,7 @@ The Access-Control-Max-Age header specifies how long the response to the preflig
 
 [!code-csharp[Main](cors/sample/CorsExample4/Startup.cs?range=89-94)]
 
-<a name=cors-how-cors-works></a>
+<a name="cors-how-cors-works"></a>
 
 ## How CORS works
 
@@ -235,7 +235,7 @@ User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6
 Host: myservice.azurewebsites.net
 ```
 
-If the server allows the request, it sets the Access-Control-Allow-Origin header. The value of this header either matches the Origin header, or is the wildcard value "*", meaning that any origin is allowed.:
+If the server allows the request, it sets the Access-Control-Allow-Origin header in the response. The value of this header either matches the Origin header from the request, or is the wildcard value "*", meaning that any origin is allowed:
 
 ```
 HTTP/1.1 200 OK

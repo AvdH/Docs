@@ -1,7 +1,7 @@
 ---
 title: URL Rewriting Middleware in ASP.NET Core
 author: guardrex
-description: An introduction to URL rewriting and redirecting with instructions on how to use URL Rewriting Middleware in ASP.NET Core applications.
+description: Learn about URL rewriting and redirecting with URL Rewriting Middleware in ASP.NET Core applications.
 keywords: ASP.NET Core,URL rewriting,URL rewrite,URL redirecting,URL redirect,middleware,apache_mod
 ms.author: riande
 manager: wpickett
@@ -14,9 +14,9 @@ uid: fundamentals/url-rewriting
 ---
 # URL Rewriting Middleware in ASP.NET Core
 
-By [Luke Latham](https://github.com/GuardRex) and [Mikael Mengistu](https://github.com/mikaelm12)
+By [Luke Latham](https://github.com/guardrex) and [Mikael Mengistu](https://github.com/mikaelm12)
 
-[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)
+[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([how to download](xref:tutorials/index#how-to-download-a-sample))
 
 URL rewriting is the act of modifying request URLs based on one or more predefined rules. URL rewriting creates an abstraction between resource locations and their addresses so that the locations and addresses are not tightly linked. There are several scenarios where URL rewriting is valuable:
 * Moving or replacing server resources temporarily or permanently while maintaining stable locators for those resources
@@ -93,7 +93,7 @@ The part of the expression contained within parentheses is called a *capture gro
 
 In the replacement string, captured groups are injected into the string with the dollar sign (`$`) followed by the sequence number of the capture. The first capture group value is obtained with `$1`, the second with `$2`, and they continue in sequence for the capture groups in your regex. There's only one captured group in the redirect rule regex in the sample app, so there's only one injected group in the replacement string, which is `$1`. When the rule is applied, the URL becomes `/redirected/1234/5678`.
 
-<a name=url-redirect-to-secure-endpoint></a>
+<a name="url-redirect-to-secure-endpoint"></a>
 ### URL redirect to a secure endpoint
 Use `AddRedirectToHttps` to redirect HTTP requests to the same host and path using HTTPS (`https://`). If the status code isn't supplied, the middleware defaults to 302 (Found). If the port isn't supplied, the middleware defaults to `null`, which means the protocol changes to `https://` and the client accesses the resource on port 443. The example shows how to set the status code to 301 (Moved Permanently) and change the port to 5001.
 ```csharp
@@ -216,7 +216,7 @@ The middleware supports the following Apache mod_rewrite server variables:
 * TIME_YEAR
 
 ### IIS URL Rewrite Module rules
-To use rules that apply to the IIS URL Rewrite Module, use `AddIISUrlRewrite`. Make sure that the rules file is deployed with the app. Don't direct the middleware to use your *web.config* file when running on Windows Server IIS. With IIS, these rules should be stored outside of your *web.config* to avoid conflicts with the IIS Rewrite module. For more information and examples of IIS URL Rewrite Module rules, see [Using Url Rewrite Module 2.0](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20) and [URL Rewrite Module Configuration Reference](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
+To use rules that apply to the IIS URL Rewrite Module, use `AddIISUrlRewrite`. Make sure that the rules file is deployed with the app. Don't direct the middleware to use your *web.config* file when running on Windows Server IIS. With IIS, these rules should be stored outside of your *web.config* to avoid conflicts with the IIS Rewrite module. For more information and examples of IIS URL Rewrite Module rules, see [Using Url Rewrite Module 2.0](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) and [URL Rewrite Module Configuration Reference](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
 # [ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -376,8 +376,8 @@ Original Request: `/image.jpg`
 * [Regular expressions in .NET](/dotnet/articles/standard/base-types/regular-expressions)
 * [Regular expression language - quick reference](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
-* [Using Url Rewrite Module 2.0 (for IIS)](https://www.iis.net/learn/extensions/url-rewrite-module/using-url-rewrite-module-20)
-* [URL Rewrite Module Configuration Reference](https://www.iis.net/learn/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
+* [Using Url Rewrite Module 2.0 (for IIS)](https://docs.microsoft.com/iis/extensions/url-rewrite-module/using-url-rewrite-module-20)
+* [URL Rewrite Module Configuration Reference](https://docs.microsoft.com/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
 * [IIS URL Rewrite Module Forum](https://forums.iis.net/1152.aspx)
 * [Keep a simple URL structure](https://support.google.com/webmasters/answer/76329?hl=en)
 * [10 URL Rewriting Tips and Tricks](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/)

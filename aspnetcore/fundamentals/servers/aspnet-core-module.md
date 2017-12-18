@@ -2,7 +2,7 @@
 title: ASP.NET Core Module
 author: tdykstra
 description: Introduces ASP.NET Core Module (ANCM), an IIS module that lets the Kestrel web server use IIS or IIS Express as a reverse proxy server.
-keywords: ASP.NET Core, IIS, IIS Express, ASP.NET Core Module, UseIISIntegration
+keywords: ASP.NET Core,IIS,IIS Express,ASP.NET Core Module,UseIISIntegration
 ms.author: tdykstra
 manager: wpickett
 ms.date: 08/03/2017
@@ -15,7 +15,7 @@ ms.custom: H1Hack27Feb2017
 ---
 # Introduction to ASP.NET Core Module
 
-By [Tom Dykstra](http://github.com/tdykstra), [Rick Strahl](https://github.com/RickStrahl), and [Chris Ross](https://github.com/Tratcher) 
+By [Tom Dykstra](https://github.com/tdykstra), [Rick Strahl](https://github.com/RickStrahl), and [Chris Ross](https://github.com/Tratcher) 
 
 ASP.NET Core Module (ANCM) lets you run ASP.NET Core applications behind IIS, using IIS for what it's good at (security, manageability, and lots more) and using [Kestrel](kestrel.md) for what it's good at (being really fast), and getting the benefits from both technologies at once. **ANCM works only with Kestrel; it isn't compatible with WebListener (in ASP.NET Core 1.x) or HTTP.sys (in 2.x).** 
 
@@ -23,7 +23,7 @@ Supported Windows versions:
 
 * Windows 7 and Windows Server 2008 R2 and later
 
-[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample)
+[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/aspnet-core-module/sample) ([how to download](xref:tutorials/index#how-to-download-a-sample))
 
 ## What ASP.NET Core Module does
 
@@ -53,7 +53,8 @@ This section provides an overview of the process for setting up an IIS server an
 
 ### Install ANCM
 
-The ASP.NET Core Module has to be installed in IIS on your servers and in IIS Express on your development machines. For servers, ANCM is included in the [.NET Core Windows Server Hosting bundle](https://aka.ms/dotnetcore.2.0.0-windowshosting). For development machines, Visual Studio automatically installs ANCM in IIS Express, and in IIS if it is already installed on the machine.
+
+The ASP.NET Core Module has to be installed in IIS on your servers and in IIS Express on your development machines. For servers, ANCM is included in the [.NET Core Windows Server Hosting bundle](https://aka.ms/dotnetcore-2-windowshosting). For development machines, Visual Studio automatically installs ANCM in IIS Express, and in IIS if it is already installed on the machine.
 
 ### Install the IISIntegration NuGet package
 
@@ -106,6 +107,12 @@ Configuration for the ASP.NET Core Module is stored in the *Web.config* file tha
 ### Run with IIS Express in development
 
 IIS Express can be launched by Visual Studio using the default profile defined by the ASP.NET Core templates.
+
+## Proxy configuration uses HTTP protocol and a pairing token
+
+The proxy created between the ANCM and Kestrel uses the HTTP protocol. Using HTTP is a performance optimization where the traffic between the ANCM and Kestrel takes place on a loopback address off of the network interface. There's no risk of eavesdropping the traffic between the ANCM and Kestrel from a location off of the server.
+
+A pairing token is used to guarantee that the requests received by Kestrel were proxied by IIS and didn't come from some other source. The pairing token is created and set into an environment variable (`ASPNETCORE_TOKEN`) by the ANCM. The pairing token is also set into a header (`MSAspNetCoreToken`) on every proxied request. IIS Middleware checks each request it receives to confirm that the pairing token header value matches the environment variable value. If the token values are mismatched, the request is logged and rejected. The pairing token environment variable and the traffic between the ANCM and Kestrel aren't accessible from a location off of the server. Without knowing the pairing token value, an attacker can't submit requests that bypass the check in the IIS Middleware.
 
 ## Next steps
 

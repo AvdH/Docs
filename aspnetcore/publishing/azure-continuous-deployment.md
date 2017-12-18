@@ -21,7 +21,7 @@ This tutorial shows you how to create an ASP.NET Core web app using Visual Studi
 See also [Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic), which shows how to configure a continuous delivery (CD) workflow for [Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/) using Visual Studio Team Services. Azure Continuous Delivery in Team Services simplifies setting up a robust deployment pipeline to publish updates for your app to Azure App Service. The pipeline can be configured from the Azure portal to build, run tests, deploy to a staging slot,  and then deploy to production.
 
 > [!NOTE]
-> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 
 ## Prerequisites
 
@@ -29,9 +29,9 @@ This tutorial assumes you have already installed the following:
 
 * [Visual Studio](https://www.visualstudio.com)
 
-* [ASP.NET Core](http://go.microsoft.com/fwlink/?LinkId=627627) (runtime and tooling)
+* [ASP.NET Core](https://www.microsoft.com/net/download/core) (runtime and tooling)
 
-* [Git](http://git-scm.com/downloads) for Windows
+* [Git](https://git-scm.com/downloads) for Windows
 
 ## Create an ASP.NET Core web app
 
@@ -39,14 +39,16 @@ This tutorial assumes you have already installed the following:
 
 2. From the **File** menu, select **New** > **Project**.
 
-3. Select the **ASP.NET Web Application** project template. It appears under **Installed** > **Templates** > **Visual C#** > **Web**. Name the project `SampleWebAppDemo`. Select the **Create new Git respository** option and click **OK**.
+3. Select the **ASP.NET Core Web Application** project template. It appears under **Installed** > **Templates** > **Visual C#** > **.NET Core**. Name the project `SampleWebAppDemo`. Select the **Create new Git respository** option and click **OK**.
 
    ![New Project dialog](azure-continuous-deployment/_static/01-new-project.png)
 
-4. In the **New ASP.NET Project** dialog, select the ASP.NET Core **Empty** template, then click **OK**.
+4. In the **New ASP.NET Core Project** dialog, select the ASP.NET Core **Empty** template, then click **OK**.
 
    ![New ASP.NET Project dialog](azure-continuous-deployment/_static/02-web-site-template.png)
 
+>[!NOTE]
+    >Most recent release of .NET Core is 2.0
 
 ### Running the web app locally
 
@@ -89,21 +91,17 @@ Git is a distributed version control system that you can use to deploy your Azur
 
 1. Log into the [Azure Portal](https://portal.azure.com), if you're not already logged in.
 
-2. Click **Browse**, located at the bottom of the navigation pane.
+2. Click **App Services** to view a list of the app services associated with your Azure subscription.
 
-3. Click **Web Apps** to view a list of the web apps associated with your Azure subscription.
+3. Select the web app you created in the previous section of this tutorial.
 
-4. Select the web app you created in the previous section of this tutorial.
+4. In the **Deployment** blade, select **Deployment options** > **Choose Source** > **Local Git Repository**.
 
-5. If the **Settings** blade is not shown, select **Settings** in the **Web App** blade.
+   ![Settings blade: Deployment source blade: Choose source blade](azure-continuous-deployment/_static/deployment-options.png)
 
-6. In the **Settings** blade, select **Deployment source** > **Choose Source** > **Local Git Repository**.
+5. Click **OK**.
 
-   ![Settings blade: Deployment source blade: Choose source blade](azure-continuous-deployment/_static/08-azure-localrepository.png)
-
-7. Click **OK**.
-
-8. If you have not previously set up deployment credentials for publishing a web app or other App Service app, set them up now:
+6. If you have not previously set up deployment credentials for publishing a web app or other App Service app, set them up now:
 
    * Click **Settings** > **Deployment credentials**. The **Set deployment credentials** blade will be displayed.
 
@@ -111,9 +109,9 @@ Git is a distributed version control system that you can use to deploy your Azur
 
    * Click **Save**.
 
-9. In the **Web App** blade, click **Settings** > **Properties**. The URL of the remote Git repository that you'll deploy to is shown under **GIT URL**.
+7. In the **Web App** blade, click **Settings** > **Properties**. The URL of the remote Git repository that you'll deploy to is shown under **GIT URL**.
 
-10. Copy the **GIT URL** value for later use in the tutorial.
+8. Copy the **GIT URL** value for later use in the tutorial.
 
    ![Azure Portal: application Properties blade](azure-continuous-deployment/_static/09-azure-giturl.png)
 
@@ -189,7 +187,7 @@ In this section, you will create a local Git repository using Visual Studio and 
 
 You can verify that you successfully transferred the web app from your local environment to Azure. You'll see the listed successful deployment.
 
-1. In the [Azure Portal](https://portal.azure.com), select your web app. Then, select **Settings** > **Continuous deployment**.
+1. In the [Azure Portal](https://portal.azure.com), select your web app. Then, select **Deployment** > **Deployment options**.
 
    ![Azure Portal: Settings blade: Deployments blade showing successful deployment](azure-continuous-deployment/_static/13-verify-deployment.png)
 

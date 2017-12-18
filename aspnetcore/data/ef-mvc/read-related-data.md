@@ -2,7 +2,7 @@
 title: ASP.NET Core MVC with EF Core - Read Related Data - 6 of 10
 author: tdykstra
 description: In this tutorial you'll read and display related data -- that is, data that the Entity Framework loads into navigation properties.
-keywords: ASP.NET Core, Entity Framework Core, related data, joins
+keywords: ASP.NET Core,Entity Framework Core,related data,joins
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -81,13 +81,13 @@ You've made the following changes to the scaffolded code:
   @Html.DisplayFor(modelItem => item.Department.Name)
   ```
 
-Run the page (select the Courses tab on the Contoso University home page) to see the list with department names.
+Run the app and select the **Courses** tab to see the list with department names.
 
 ![Courses Index page](read-related-data/_static/courses-index.png)
 
 ## Create an Instructors page that shows Courses and Enrollments
 
-In this section you'll create a controller and view for the Instructor entity in order to display the Instructors page:
+In this section, you'll create a controller and view for the Instructor entity in order to display the Instructors page:
 
 ![Instructors Index page](read-related-data/_static/instructors-index.png)
 
@@ -163,7 +163,7 @@ Next, if a course was selected, the selected course is retrieved from the list o
 
 In *Views/Instructors/Index.cshtml*, replace the template code with the following code. The changes are highlighted.
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,18-19,41-54,56)]
+[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
 You've made the following changes to the existing code:
 
@@ -180,7 +180,7 @@ You've made the following changes to the existing code:
   }
   ```
 
-* Added a **Courses** column that displays courses taught by each instructor.
+* Added a **Courses** column that displays courses taught by each instructor. See [Explicit Line Transition with `@:`](xref:mvc/views/razor#explicit-line-transition-with-) for more about this razor syntax.
 
 * Added code that dynamically adds `class="success"` to the `tr` element of the selected instructor. This sets a background color for the selected row using a Bootstrap class.
 
@@ -190,6 +190,7 @@ You've made the following changes to the existing code:
   {
       selectedRow = "success";
   }
+  <tr class="@selectedRow">
   ```
 
 * Added a new hyperlink labeled **Select** immediately before the other links in each row, which causes the selected instructor's ID to be sent to the `Index` method.
@@ -198,7 +199,7 @@ You've made the following changes to the existing code:
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-Run the application and select the Instructors tab. The page displays the Location property of related OfficeAssignment entities and an empty table cell when there's no related OfficeAssignment entity.
+Run the app and select the **Instructors** tab. The page displays the Location property of related OfficeAssignment entities and an empty table cell when there's no related OfficeAssignment entity.
 
 ![Instructors Index page nothing selected](read-related-data/_static/instructors-index-no-selection.png)
 
@@ -208,7 +209,7 @@ In the *Views/Instructors/Index.cshtml* file, after the closing table element (a
 
 This code reads the `Courses` property of the view model to display a list of courses. It also provides a **Select** hyperlink that sends the ID of the selected course to the `Index` action method.
 
-Run the page and select an instructor. Now you see a grid that displays courses assigned to the selected instructor, and for each course you see the name of the assigned department.
+Refresh the page and select an instructor. Now you see a grid that displays courses assigned to the selected instructor, and for each course you see the name of the assigned department.
 
 ![Instructors Index page instructor selected](read-related-data/_static/instructors-index-instructor-selected.png)
 
@@ -218,7 +219,7 @@ After the code block you just added, add the following code. This displays a lis
 
 This code reads the Enrollments property of the view model in order to display a list of students enrolled in the course.
 
-Run the page and select an instructor. Then select a course to see the list of enrolled students and their grades.
+Refresh the page again and select an instructor. Then select a course to see the list of enrolled students and their grades.
 
 ![Instructors Index page instructor and course selected](read-related-data/_static/instructors-index.png)
 
@@ -228,11 +229,11 @@ When you retrieved the list of instructors in *InstructorsController.cs*, you sp
 
 Suppose you expected users to only rarely want to see enrollments in a selected instructor and course. In that case, you might want to load the enrollment data only if it's requested. To see an example of how to do explicit loading, replace the `Index` method with the following code, which removes eager loading for Enrollments and loads that property explicitly. The code changes are highlighted.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=25-31)]
+[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
 
 The new code drops the *ThenInclude* method calls for enrollment data from the code that retrieves instructor entities. If an instructor and course are selected, the highlighted code retrieves Enrollment entities for the selected course, and Student entities for each Enrollment.
 
-Run the Instructor Index page now and you'll see no difference in what's displayed on the page, although you've changed how the data is retrieved.
+Run the app, go to the Instructors Index page now and you'll see no difference in what's displayed on the page, although you've changed how the data is retrieved.
 
 ## Summary
 
